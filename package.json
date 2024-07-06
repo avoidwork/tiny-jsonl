@@ -1,6 +1,6 @@
 {
   "name": "tiny-jsonl",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Transforms Objects and Arrays into JSONL Strings.",
   "main": "dist/tiny-jsonl.cjs",
   "exports": {
@@ -55,5 +55,8 @@
   "bugs": {
     "url": "https://github.com/avoidwork/tiny-jsonl/issues"
   },
-  "homepage": "https://github.com/avoidwork/tiny-jsonl#readme"
+  "homepage": "https://github.com/avoidwork/tiny-jsonl#readme",
+  "dependencies": {
+    "tiny-strings": "^1.0.0"
+  }
 }
