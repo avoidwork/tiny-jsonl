@@ -1,0 +1,54 @@
+{
+  "name": "tiny-jsonl",
+  "version": "1.0.0",
+  "description": "Transforms Objects and Arrays into JSONL Strings",
+  "main": "dist/tiny-jsonl.cjs",
+  "exports": {
+    "types": "./types/jsonl.d.ts",
+    "import": "./dist/tiny-jsonl.js",
+    "require": "./dist/tiny-jsonl.cjs"
+  },
+  "type": "module",
+  "types": "types/jsonl.d.ts",
+  "engines": {
+    "node": ">=12"
+  },
+  "engineStrict": true,
+  "scripts": {
+    "build": "npm run lint && npm run rollup && npm run mocha",
+    "changelog": "auto-changelog -p",
+    "lint": "eslint --fix *.js src/*.js test/*.js",
+    "mocha": "nyc mocha test/*.js",
+    "rollup": "rollup --config",
+    "test": "npm run lint && npm run mocha",
+    "types": "npx -p typescript tsc src/jsonl.js --declaration --allowJs --emitDeclarationOnly --outDir types",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
+    "auto-changelog": "^2.4.0",
+    "eslint": "^9.6.0",
+    "husky": "^9.0.11",
+    "mocha": "^10.6.0",
+    "nyc": "^17.0.0",
+    "precise": "^4.0.3",
+    "rollup": "^4.18.0",
+    "typescript": "^5.5.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avoidwork/tiny-jsonl.git"
+  },
+  "keywords": [
+    "jsonl",
+    "object",
+    "array",
+    "string"
+  ],
+  "author": "Jason Mulligan <jason.mulligan@avoidwork.com>",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/avoidwork/tiny-jsonl/issues"
+  },
+  "homepage": "https://github.com/avoidwork/tiny-jsonl#readme"
+}
