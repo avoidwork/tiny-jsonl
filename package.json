@@ -22,7 +22,7 @@
     "rollup": "rollup --config",
     "test": "npm run lint && npm run mocha",
     "types": "npx -p typescript tsc src/jsonl.js --declaration --allowJs --emitDeclarationOnly --outDir types",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.4",
