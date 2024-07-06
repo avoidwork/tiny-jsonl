@@ -1,5 +1,6 @@
 import {MSG_INVALID_INPUT, STRING_NEW_LINE, STRING_OBJECT, STRING_REPLACEMENT} from "./constants.js";
-import {crawl} from "./crawl.js";
+import {rewrite} from "./rewrite.js";
+import {strings} from "tiny-strings";
 
 export function jsonl (arg) {
 	if (typeof arg !== STRING_OBJECT) {
@@ -12,17 +13,15 @@ export function jsonl (arg) {
 		result = arg.map(i => jsonl(i)).join(STRING_NEW_LINE);
 	} else {
 		let tmp = JSON.stringify(arg, null, 0);
-		const strings = [];
+		const extracted = strings(arg, true).map(rewrite);
 
-		crawl(arg, strings);
-
-		for (const [idx, val] of strings.entries()) {
+		for (const [idx, val] of extracted.entries()) {
 			tmp = tmp.replace(`"${val}"`, `INDEX_${idx}`);
 		}
 
 		result = tmp.replace(/(:|,)/g, STRING_REPLACEMENT);
 
-		for (const [idx, val] of strings.entries()) {
+		for (const [idx, val] of extracted.entries()) {
 			result = result.replace(`INDEX_${idx}`, `"${val}"`);
 		}
 	}
