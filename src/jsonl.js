@@ -2,6 +2,11 @@ import {MSG_INVALID_INPUT, STRING_NEW_LINE, STRING_OBJECT, STRING_REPLACEMENT} f
 import {rewrite} from "./rewrite.js";
 import {strings} from "tiny-strings";
 
+/**
+ * Converts an Object or Array of Objects to JSONL string
+ * @param arg
+ * @returns {string}
+ */
 export function jsonl (arg) {
 	if (typeof arg !== STRING_OBJECT) {
 		throw new TypeError(MSG_INVALID_INPUT);

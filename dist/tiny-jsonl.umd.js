@@ -8,9 +8,19 @@
 (function(g,f){typeof exports==='object'&&typeof module!=='undefined'?f(exports,require('tiny-strings')):typeof define==='function'&&define.amd?define(['exports','tiny-strings'],f):(g=typeof globalThis!=='undefined'?globalThis:g||self,f(g.jsonl={},g.tinyStrings));})(this,(function(exports,tinyStrings){'use strict';const STRING_NEW_LINE = "\n";
 const STRING_REPLACEMENT = "$1 ";
 const STRING_OBJECT = "object";
-const MSG_INVALID_INPUT = "Argument must be an Array or Object";function rewrite (arg = "") {
+const MSG_INVALID_INPUT = "Argument must be an Array or Object";/**
+ * Rewrite a string to be used in swaps
+ * @param arg
+ * @returns {string}
+ */
+function rewrite (arg = "") {
 	return `"${arg.replace(/"/g, "\\\"")}"`;
-}function jsonl (arg) {
+}/**
+ * Converts an Object or Array of Objects to JSONL string
+ * @param arg
+ * @returns {string}
+ */
+function jsonl (arg) {
 	if (typeof arg !== STRING_OBJECT) {
 		throw new TypeError(MSG_INVALID_INPUT);
 	}

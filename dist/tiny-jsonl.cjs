@@ -14,10 +14,20 @@ const STRING_REPLACEMENT = "$1 ";
 const STRING_OBJECT = "object";
 const MSG_INVALID_INPUT = "Argument must be an Array or Object";
 
+/**
+ * Rewrite a string to be used in swaps
+ * @param arg
+ * @returns {string}
+ */
 function rewrite (arg = "") {
 	return `"${arg.replace(/"/g, "\\\"")}"`;
 }
 
+/**
+ * Converts an Object or Array of Objects to JSONL string
+ * @param arg
+ * @returns {string}
+ */
 function jsonl (arg) {
 	if (typeof arg !== STRING_OBJECT) {
 		throw new TypeError(MSG_INVALID_INPUT);
