@@ -10,15 +10,21 @@ const STRING_NEW_LINE = "\n";
 const STRING_REPLACEMENT = "$1 ";
 const STRING_STRING = "string";
 const STRING_OBJECT = "object";
-const MSG_INVALID_INPUT = "Argument must be an Array or Object";function crawl (arg = {}, strings = []) {
+const MSG_INVALID_INPUT = "Argument must be an Array or Object";function rewrite (arg = "") {
+	return arg.replace(/"/g, "\\\"");
+}function crawl (arg = {}, strings = []) {
 	const keys = Object.keys(arg);
 	strings.push(...keys);
 	for (const key of strings) {
 		if (typeof arg[key] === STRING_STRING) {
-			strings.push(arg[key].replace(/"/g, "\\\""));
+			strings.push(rewrite(arg[key]));
 		} else if (Array.isArray(arg[key])) {
 			for (const value of arg[key]) {
-				crawl(value, strings);
+				if (typeof value === STRING_OBJECT) {
+					crawl(value, strings);
+				} else if (typeof value === STRING_STRING) {
+					strings.push(rewrite(value));
+				}
 			}
 		} else if (typeof arg[key] === STRING_OBJECT) {
 			crawl(arg[key], strings);
