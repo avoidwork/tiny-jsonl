@@ -3,8 +3,8 @@ import {jsonl} from "../dist/tiny-jsonl.cjs";
 
 describe("Testing functionality", function () {
 	it("It should handle an Object", function () {
-		const jsonldObject = jsonl({"id": "test-123", "email": "test@example.com"});
-		const expectedResult = "{\"id\": \"test-123\", \"email\": \"test@example.com\"}";
+		const jsonldObject = jsonl({"id": "test-123", "email": "test@example.com", "field1:field2": "d,e"});
+		const expectedResult = "{\"id\": \"test-123\", \"email\": \"test@example.com\", \"field1:field2\": \"d,e\"}";
 		assert.strictEqual(jsonldObject, expectedResult, "Should match the jsonld string");
 	});
 
