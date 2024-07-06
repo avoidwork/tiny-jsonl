@@ -1,3 +1,3 @@
 export function rewrite (arg = "") {
-	return arg.replace(/"/g, "\\\"");
+	return `"${arg.replace(/"/g, "\\\"")}"`;
 }

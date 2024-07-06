@@ -16,13 +16,13 @@ export function jsonl (arg) {
 		const extracted = strings(arg, true).map(rewrite);
 
 		for (const [idx, val] of extracted.entries()) {
-			tmp = tmp.replace(`"${val}"`, `INDEX_${idx}`);
+			tmp = tmp.replace(val, `INDEX_${idx}`);
 		}
 
 		result = tmp.replace(/(:|,)/g, STRING_REPLACEMENT);
 
 		for (const [idx, val] of extracted.entries()) {
-			result = result.replace(`INDEX_${idx}`, `"${val}"`);
+			result = result.replace(`INDEX_${idx}`, val);
 		}
 	}
 
