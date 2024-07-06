@@ -7,7 +7,6 @@
  */
 'use strict';
 
-const STRING_EMPTY = "";
 const STRING_NEW_LINE = "\n";
 const STRING_REPLACEMENT = "$1 ";
 const STRING_STRING = "string";
@@ -57,7 +56,7 @@ function jsonl (arg) {
 			tmp = tmp.replace(`"${val}"`, `INDEX_${idx}`);
 		}
 
-		result = tmp.replace(/\n/g, STRING_EMPTY).replace(/(:|,)/g, STRING_REPLACEMENT);
+		result = tmp.replace(/(:|,)/g, STRING_REPLACEMENT);
 
 		for (const [idx, val] of strings.entries()) {
 			result = result.replace(`INDEX_${idx}`, `"${val}"`);

@@ -1,4 +1,4 @@
-import {MSG_INVALID_INPUT, STRING_EMPTY, STRING_NEW_LINE, STRING_OBJECT, STRING_REPLACEMENT} from "./constants.js";
+import {MSG_INVALID_INPUT, STRING_NEW_LINE, STRING_OBJECT, STRING_REPLACEMENT} from "./constants.js";
 import {crawl} from "./crawl.js";
 
 export function jsonl (arg) {
@@ -20,7 +20,7 @@ export function jsonl (arg) {
 			tmp = tmp.replace(`"${val}"`, `INDEX_${idx}`);
 		}
 
-		result = tmp.replace(/\n/g, STRING_EMPTY).replace(/(:|,)/g, STRING_REPLACEMENT);
+		result = tmp.replace(/(:|,)/g, STRING_REPLACEMENT);
 
 		for (const [idx, val] of strings.entries()) {
 			result = result.replace(`INDEX_${idx}`, `"${val}"`);

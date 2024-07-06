@@ -5,7 +5,6 @@
  * @license BSD-3-Clause
  * @version 1.0.3
  */
-const STRING_EMPTY = "";
 const STRING_NEW_LINE = "\n";
 const STRING_REPLACEMENT = "$1 ";
 const STRING_STRING = "string";
@@ -49,7 +48,7 @@ const MSG_INVALID_INPUT = "Argument must be an Array or Object";function rewrite
 			tmp = tmp.replace(`"${val}"`, `INDEX_${idx}`);
 		}
 
-		result = tmp.replace(/\n/g, STRING_EMPTY).replace(/(:|,)/g, STRING_REPLACEMENT);
+		result = tmp.replace(/(:|,)/g, STRING_REPLACEMENT);
 
 		for (const [idx, val] of strings.entries()) {
 			result = result.replace(`INDEX_${idx}`, `"${val}"`);
