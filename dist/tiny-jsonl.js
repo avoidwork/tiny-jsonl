@@ -5,13 +5,21 @@
  * @license BSD-3-Clause
  * @version 1.0.0
  */
-function jsonl (arg) {
+const STRING_EMPTY = "";
+const STRING_LEFT_BRACE = "{";
+const STRING_RIGHT_BRACE = "}";
+const STRING_NEW_LINE = "\n";
+const STRING_REPLACEMENT = "$1 ";function jsonl (arg) {
 	let result;
 
 	if (Array.isArray(arg)) {
-		result = arg.map(i => jsonl(i)).join("\n");
+		result = arg.map(i => jsonl(i)).join(STRING_NEW_LINE);
 	} else {
-		result = JSON.stringify(arg, null, 0).replace(/^"|\n|\\|"$/g, "").replace(/^{\s/, "{").replace(/\s}$/, "}").replace(/(:|,)/g, "$1 ");
+		result = JSON.stringify(arg, null, 0)
+			.replace(/^"|\n|\\|"$/g, STRING_EMPTY)
+			.replace(/^{\s/, STRING_LEFT_BRACE)
+			.replace(/\s}$/, STRING_RIGHT_BRACE)
+			.replace(/(:|,)/g, STRING_REPLACEMENT);
 	}
 
 	return result;
