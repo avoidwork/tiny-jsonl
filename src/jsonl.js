@@ -1,7 +1,11 @@
-import {STRING_EMPTY, STRING_NEW_LINE, STRING_REPLACEMENT} from "./constants.js";
+import {MSG_INVALID_INPUT, STRING_EMPTY, STRING_NEW_LINE, STRING_OBJECT, STRING_REPLACEMENT} from "./constants.js";
 import {crawl} from "./crawl.js";
 
 export function jsonl (arg) {
+	if (typeof arg !== STRING_OBJECT) {
+		throw new TypeError(MSG_INVALID_INPUT);
+	}
+
 	let result;
 
 	if (Array.isArray(arg)) {

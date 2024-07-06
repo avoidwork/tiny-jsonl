@@ -3,13 +3,14 @@
  *
  * @copyright 2024 Jason Mulligan <jason.mulligan@avoidwork.com>
  * @license BSD-3-Clause
- * @version 1.0.2
+ * @version 1.0.3
  */
 const STRING_EMPTY = "";
 const STRING_NEW_LINE = "\n";
 const STRING_REPLACEMENT = "$1 ";
 const STRING_STRING = "string";
-const STRING_OBJECT = "object";function crawl (arg = {}, strings = []) {
+const STRING_OBJECT = "object";
+const MSG_INVALID_INPUT = "Argument must be an Array or Object";function crawl (arg = {}, strings = []) {
 	const keys = Object.keys(arg);
 	strings.push(...keys);
 	for (const key of strings) {
@@ -24,6 +25,10 @@ const STRING_OBJECT = "object";function crawl (arg = {}, strings = []) {
 		}
 	}
 }function jsonl (arg) {
+	if (typeof arg !== STRING_OBJECT) {
+		throw new TypeError(MSG_INVALID_INPUT);
+	}
+
 	let result;
 
 	if (Array.isArray(arg)) {
