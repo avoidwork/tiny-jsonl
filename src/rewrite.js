@@ -3,6 +3,6 @@
  * @param arg
  * @returns {string}
  */
-export function rewrite (arg = "") {
+export function rewrite (arg) {
 	return `"${arg.replace(/"/g, "\\\"")}"`;
 }

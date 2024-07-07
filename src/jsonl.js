@@ -1,4 +1,11 @@
-import {MSG_INVALID_INPUT, STRING_NEW_LINE, STRING_OBJECT, STRING_REPLACEMENT} from "./constants.js";
+import {
+	MSG_INDEX,
+	MSG_INVALID_INPUT,
+	STRING_MARK,
+	STRING_NEW_LINE,
+	STRING_OBJECT,
+	STRING_REPLACEMENT
+} from "./constants.js";
 import {rewrite} from "./rewrite.js";
 import {strings} from "tiny-strings";
 
@@ -21,13 +28,13 @@ export function jsonl (arg) {
 		const extracted = strings(arg, true).map(rewrite);
 
 		for (const [idx, val] of extracted.entries()) {
-			tmp = tmp.replace(val, `INDEX_${idx}`);
+			tmp = tmp.replace(val, MSG_INDEX.replace(STRING_MARK, idx));
 		}
 
 		result = tmp.replace(/(:|,)/g, STRING_REPLACEMENT);
 
 		for (const [idx, val] of extracted.entries()) {
-			result = result.replace(`INDEX_${idx}`, val);
+			result = result.replace(MSG_INDEX.replace(STRING_MARK, idx), val);
 		}
 	}
 
