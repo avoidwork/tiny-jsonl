@@ -3,7 +3,7 @@
  *
  * @copyright 2024 Jason Mulligan <jason.mulligan@avoidwork.com>
  * @license BSD-3-Clause
- * @version 1.0.7
+ * @version 1.0.8
  */
 import {strings}from'tiny-strings';const STRING_NEW_LINE = "\n";
 const STRING_REPLACEMENT = "$1 ";
