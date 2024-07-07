@@ -16,7 +16,7 @@ const MSG_INDEX = `<IDX_${STRING_MARK}>`;/**
  * @returns {string}
  */
 function rewrite (arg) {
-	return `"${arg.replace(/"/g, "\\\"")}"`;
+	return `"${arg.replace(/"/g, "\\\"").replace(/\n/g, "\\n").replace(/\r/g, "\\r").replace(/\t/g, "\\t")}"`;
 }/**
  * Converts an Object or Array of Objects to JSONL string
  * @param arg

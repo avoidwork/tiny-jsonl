@@ -3,8 +3,8 @@ import {jsonl} from "../dist/tiny-jsonl.cjs";
 
 describe("Testing functionality", function () {
 	it("It should handle an Object", function () {
-		const jsonlObject = jsonl({"id": "test-123", "email": "test@example.com", "field1:field2": "d,e", "description": "this field has \"embed quotes\"", "object": {"abc": true, "def": false}, "array": ["ghi", 1234, "other string", {"nested": true}]});
-		const expectedResult = "{\"id\": \"test-123\", \"email\": \"test@example.com\", \"field1:field2\": \"d,e\", \"description\": \"this field has \\\"embed quotes\\\"\", \"object\": {\"abc\": true, \"def\": false}, \"array\": [\"ghi\", 1234, \"other string\", {\"nested\": true}]}";
+		const jsonlObject = jsonl({"id": "test-123", "email": "test@example.com", "field1:field2": "d,e", "description": "this field has \"embed quotes\"", "object": {"abc": true, "def": false}, "array": ["ghi", 1234, "other string", {"nested": true, "multi-line": "string\ttabbed\n\rwith\n\rnew\n\rlines"}]});
+		const expectedResult = "{\"id\": \"test-123\", \"email\": \"test@example.com\", \"field1:field2\": \"d,e\", \"description\": \"this field has \\\"embed quotes\\\"\", \"object\": {\"abc\": true, \"def\": false}, \"array\": [\"ghi\", 1234, \"other string\", {\"nested\": true, \"multi-line\": \"string\\ttabbed\\n\\rwith\\n\\rnew\\n\\rlines\"}]}";
 		strictEqual(jsonlObject, expectedResult, "Should match the jsonl string");
 	});
 
