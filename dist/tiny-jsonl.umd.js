@@ -3,7 +3,7 @@
  *
  * @copyright 2024 Jason Mulligan <jason.mulligan@avoidwork.com>
  * @license BSD-3-Clause
- * @version 2.0.0
+ * @version 2.0.1
  */
 (function(g,f){typeof exports==='object'&&typeof module!=='undefined'?f(exports,require('tiny-strings')):typeof define==='function'&&define.amd?define(['exports','tiny-strings'],f):(g=typeof globalThis!=='undefined'?globalThis:g||self,f(g.jsonl={},g.tinyStrings));})(this,(function(exports,tinyStrings){'use strict';const STRING_MARK = "$";
 const STRING_NEW_LINE = "\n";

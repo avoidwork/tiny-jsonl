@@ -3,7 +3,7 @@
  *
  * @copyright 2024 Jason Mulligan <jason.mulligan@avoidwork.com>
  * @license BSD-3-Clause
- * @version 2.0.0
+ * @version 2.0.1
  */
 import {strings}from'tiny-strings';const STRING_MARK = "$";
 const STRING_NEW_LINE = "\n";

@@ -4,7 +4,7 @@ Stringify Objects and Arrays into JSONL Strings, and parse JSONL Strings into Ob
 
 ## API
 
-### parse(*arg*)
+### parse()
 
 Returns an Object, or Array of Objects from 'arg'
 
@@ -19,7 +19,7 @@ import {parse} from "tiny-jsonl";
 const arrayObjects = parse('{...}\n{...}\n{...}');
 ```
 
-### stringify(*arg*)
+### stringify()
 
 Returns a JSONL String from 'arg'
 
