@@ -14,7 +14,7 @@ describe("Testing functionality", function () {
 		strictEqual(JSON.stringify(jsonObject), JSON.stringify(expectedResult), "Should match the array of objects");
 	});
 
-	it("It should throw a TypeError if trying to parse a String", function () {
+	it("It should throw a TypeError if trying to parse a non-String", function () {
 		throws(() => parse(true), TypeError);
 	});
 
