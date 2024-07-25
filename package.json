@@ -1,6 +1,6 @@
 {
   "name": "tiny-jsonl",
-  "version": "1.0.10",
+  "version": "2.0.0",
   "description": "Transforms Objects and Arrays into JSONL Strings.",
   "main": "dist/tiny-jsonl.cjs",
   "exports": {

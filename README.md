@@ -1,10 +1,25 @@
 # Tiny JSONL
 
-Transforms Objects and Arrays into JSONL Strings.
+Stringify Objects and Arrays into JSONL Strings, and parse JSONL Strings into Objects and Arrays.
 
 ## API
 
-### jsonl(*arg*)
+### parse(*arg*)
+
+Returns an Object, or Array of Objects from 'arg'
+
+    param  {Array} or {Object} to transform
+	return {String} JSONL string
+
+**Example**
+
+```javascript
+import {parse} from "tiny-jsonl";
+
+const arrayObjects = parse('{...}\n{...}\n{...}');
+```
+
+### stringify(*arg*)
 
 Returns a JSONL String from 'arg'
 
@@ -14,7 +29,9 @@ Returns a JSONL String from 'arg'
 **Example**
 
 ```javascript
-const jsonlString = jsonl([
+import {stringify} from "tiny-jsonl";
+
+const jsonlString = stringify([
     {
         ...
     },
