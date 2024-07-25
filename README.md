@@ -8,7 +8,7 @@ Stringify Objects and Arrays into JSONL Strings, and parse JSONL Strings into Ob
 
 Returns an Object, or Array of Objects from 'arg'
 
-    param  {Array} or {Object} to transform
+    param  {String} to parse into an Object, or Array of Objects
 	return {String} JSONL string
 
 **Example**
