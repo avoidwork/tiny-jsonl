@@ -59,8 +59,8 @@ All files       |     100 |      100 |     100 |     100 |
 ### Input
 
 ```javascript
-import {jsonl} from "tiny-jsonl";
-jsonl([
+import {stringify} from "tiny-jsonl";
+stringify([
 	{
 		"_id": "66897c0b5bb3f3bda598a7be",
 		"index": 0,
