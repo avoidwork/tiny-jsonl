@@ -16,7 +16,7 @@ describe("Testing functionality", function () {
 
 	it("It should throw a TypeError if trying to parse a String", function () {
 		throws(() => parse(true), TypeError);
-	})
+	});
 
 	it("It should stringify an Object", function () {
 		const jsonlObject = stringify({"id": "test-123", "email": "test@example.com", "field1:field2": "d,e", "description": "this field has \"embed quotes\"", "object": {"abc": true, "def": false}, "array": ["ghi", 1234, "other string", {"nested": true, "multi-line": "string\ttabbed\n\rwith\n\rnew\n\rlines"}]});
@@ -32,5 +32,5 @@ describe("Testing functionality", function () {
 
 	it("It should throw a TypeError if trying to stringify a String", function () {
 		throws(() => stringify("invalid"), TypeError);
-	})
+	});
 });
