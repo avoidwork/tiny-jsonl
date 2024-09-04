@@ -3,7 +3,7 @@
  *
  * @copyright 2024 Jason Mulligan <jason.mulligan@avoidwork.com>
  * @license BSD-3-Clause
- * @version 2.0.2
+ * @version 2.0.3
  */
 import {strings}from'tiny-strings';const STRING_MARK = "$";
 const STRING_NEW_LINE = "\n";
@@ -55,15 +55,13 @@ function stringify (arg, edge = true) {
 
 	let result;
 
-	if (Array.isArray(arg)) {
+	if (Array.isArray(arg) && edge) {
 		const objects = arg.some(i => i instanceof Object);
 
 		result = arg.map(i => valid(i) ? stringify(i, false) : i);
 
 		if (edge) {
 			result = objects ? result.join(STRING_NEW_LINE) : cast(result);
-		} else {
-			result = cast(result);
 		}
 	} else {
 		let tmp = JSON.stringify(arg, null, 0);
