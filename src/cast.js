@@ -4,5 +4,7 @@
  * @returns {string}
  */
 export function cast (arg) {
-	return `[${arg.map(i => typeof i === "string" ? `"${i}"` : i).join(", ")}]`.replace(", ]", "]");
+	const result = `[${arg.map(i => typeof i === "string" ? `"${i}"` : i === null ? "null" : i).join(", ")}]`;
+
+	return result.replace(", ]", "]");
 }

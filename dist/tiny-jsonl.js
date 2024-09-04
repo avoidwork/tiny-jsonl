@@ -16,7 +16,9 @@ const MSG_INDEX = `<IDX_${STRING_MARK}>`;/**
  * @returns {string}
  */
 function cast (arg) {
-	return `[${arg.map(i => typeof i === "string" ? `"${i}"` : i).join(", ")}]`.replace(", ]", "]");
+	const result = `[${arg.map(i => typeof i === "string" ? `"${i}"` : i === null ? "null" : i).join(", ")}]`;
+
+	return result.replace(", ]", "]");
 }/**
  * Rewrite a string to be used in swaps
  * @param arg
