@@ -3,21 +3,31 @@
  *
  * @copyright 2024 Jason Mulligan <jason.mulligan@avoidwork.com>
  * @license BSD-3-Clause
- * @version 2.0.1
+ * @version 2.0.2
  */
 (function(g,f){typeof exports==='object'&&typeof module!=='undefined'?f(exports,require('tiny-strings')):typeof define==='function'&&define.amd?define(['exports','tiny-strings'],f):(g=typeof globalThis!=='undefined'?globalThis:g||self,f(g.jsonl={},g.tinyStrings));})(this,(function(exports,tinyStrings){'use strict';const STRING_MARK = "$";
 const STRING_NEW_LINE = "\n";
-const STRING_OBJECT = "object";
 const STRING_REPLACEMENT = "$1 ";
 const STRING_STRING = "string";
 const MSG_INVALID_INPUT = "Argument must be an Array or Object";
 const MSG_INDEX = `<IDX_${STRING_MARK}>`;/**
+ * Casts an array to a string
+ * @param arg
+ * @returns {string}
+ */
+function cast (arg) {
+	const result = `[${arg.map(i => typeof i === "string" ? `"${i}"` : i === null ? "null" : i).join(", ")}]`;
+
+	return result.replace(", ]", "]");
+}/**
  * Rewrite a string to be used in swaps
  * @param arg
  * @returns {string}
  */
 function rewrite (arg) {
 	return `"${arg.replace(/"/g, "\\\"").replace(/\n/g, "\\n").replace(/\r/g, "\\r").replace(/\t/g, "\\t")}"`;
+}function valid (arg) {
+	return typeof arg === "object" && arg !== null;
 }/**
  * Converts a JSONL string to an Array of Objects
  * @param arg
@@ -38,15 +48,23 @@ function parse (arg) {
  * @param arg
  * @returns {string}
  */
-function stringify (arg) {
-	if (typeof arg !== STRING_OBJECT) {
+function stringify (arg, edge = true) {
+	if (valid(arg) === false) {
 		throw new TypeError(MSG_INVALID_INPUT);
 	}
 
 	let result;
 
 	if (Array.isArray(arg)) {
-		result = arg.map(i => stringify(i)).join(STRING_NEW_LINE);
+		const objects = arg.some(i => i instanceof Object);
+
+		result = arg.map(i => valid(i) ? stringify(i, false) : i);
+
+		if (edge) {
+			result = objects ? result.join(STRING_NEW_LINE) : cast(result);
+		} else {
+			result = cast(result);
+		}
 	} else {
 		let tmp = JSON.stringify(arg, null, 0);
 		const extracted = tinyStrings.strings(arg, true).map(rewrite);

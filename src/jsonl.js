@@ -3,11 +3,12 @@ import {
 	MSG_INVALID_INPUT,
 	STRING_MARK,
 	STRING_NEW_LINE,
-	STRING_OBJECT,
 	STRING_REPLACEMENT,
 	STRING_STRING
 } from "./constants.js";
+import {cast} from "./cast.js";
 import {rewrite} from "./rewrite.js";
+import {valid} from "./valid.js";
 import {strings} from "tiny-strings";
 
 /**
@@ -30,15 +31,23 @@ export function parse (arg) {
  * @param arg
  * @returns {string}
  */
-export function stringify (arg) {
-	if (typeof arg !== STRING_OBJECT) {
+export function stringify (arg, edge = true) {
+	if (valid(arg) === false) {
 		throw new TypeError(MSG_INVALID_INPUT);
 	}
 
 	let result;
 
 	if (Array.isArray(arg)) {
-		result = arg.map(i => stringify(i)).join(STRING_NEW_LINE);
+		const objects = arg.some(i => i instanceof Object);
+
+		result = arg.map(i => valid(i) ? stringify(i, false) : i);
+
+		if (edge) {
+			result = objects ? result.join(STRING_NEW_LINE) : cast(result);
+		} else {
+			result = cast(result);
+		}
 	} else {
 		let tmp = JSON.stringify(arg, null, 0);
 		const extracted = strings(arg, true).map(rewrite);
