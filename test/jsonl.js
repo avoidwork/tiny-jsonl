@@ -32,13 +32,13 @@ describe("Testing functionality", function () {
 
 	it("It should stringify an Array of Primitives", function () {
 		const jsonlObject = stringify(["a", "b", "c", true, false, 123, 456.789, null]);
-		const expectedResult = "[\"a\", \"b\", \"c\", true, false, 123, 456.789]";
+		const expectedResult = "[\"a\", \"b\", \"c\", true, false, 123, 456.789, null]";
 		strictEqual(jsonlObject, expectedResult, "Should match the jsonl string");
 	});
 
 	it("It should stringify an Array of nested Arrays", function () {
 		const jsonlObject1 = stringify([["a", "b", "c"], [true, false], [123, 456.789, null]]);
-		const expectedResult1 = "[\"a\", \"b\", \"c\"]\n[true, false]\n[123, 456.789]";
+		const expectedResult1 = "[\"a\", \"b\", \"c\"]\n[true, false]\n[123, 456.789, null]";
 		strictEqual(jsonlObject1, expectedResult1, "Should match the jsonl string");
 		const jsonlObject2 = stringify([["a", "b", "c", [true, false]], [123, 456.789, [null, null]]]);
 		const expectedResult2 = "[\"a\", \"b\", \"c\", \"[true, false]\"]\n[123, 456.789, \"[null, null]\"]";
