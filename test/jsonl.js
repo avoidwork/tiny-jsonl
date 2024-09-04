@@ -41,7 +41,7 @@ describe("Testing functionality", function () {
 		const expectedResult1 = "[\"a\", \"b\", \"c\"]\n[true, false]\n[123, 456.789]";
 		strictEqual(jsonlObject1, expectedResult1, "Should match the jsonl string");
 		const jsonlObject2 = stringify([["a", "b", "c", [true, false]], [123, 456.789, [null, null]]]);
-		const expectedResult2 = "[\"a\", \"b\", \"c\"]\n[true, false]\n[123, 456.789]";
+		const expectedResult2 = "[\"a\", \"b\", \"c\", [true, false]]\n[123, 456.789, [null, null]]";
 		strictEqual(jsonlObject2, expectedResult2, "Should match the jsonl string");
 	});
 
