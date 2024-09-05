@@ -42,10 +42,7 @@ export function stringify (arg, edge = true) {
 		const objects = arg.some(i => i instanceof Object);
 
 		result = arg.map(i => valid(i) ? stringify(i, false) : i);
-
-		if (edge) {
-			result = objects ? result.join(STRING_NEW_LINE) : cast(result);
-		}
+		result = objects ? result.join(STRING_NEW_LINE) : cast(result);
 	} else {
 		let tmp = JSON.stringify(arg, null, 0);
 		const extracted = strings(arg, true).map(rewrite);

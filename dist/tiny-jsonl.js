@@ -3,7 +3,7 @@
  *
  * @copyright 2024 Jason Mulligan <jason.mulligan@avoidwork.com>
  * @license BSD-3-Clause
- * @version 2.0.3
+ * @version 2.0.4
  */
 import {strings}from'tiny-strings';const STRING_MARK = "$";
 const STRING_NEW_LINE = "\n";
@@ -59,10 +59,7 @@ function stringify (arg, edge = true) {
 		const objects = arg.some(i => i instanceof Object);
 
 		result = arg.map(i => valid(i) ? stringify(i, false) : i);
-
-		if (edge) {
-			result = objects ? result.join(STRING_NEW_LINE) : cast(result);
-		}
+		result = objects ? result.join(STRING_NEW_LINE) : cast(result);
 	} else {
 		let tmp = JSON.stringify(arg, null, 0);
 		const extracted = strings(arg, true).map(rewrite);
