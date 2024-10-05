@@ -1,5 +1,6 @@
 import {
 	MSG_INVALID_INPUT,
+	STRING_COMMA,
 	STRING_NEW_LINE,
 	STRING_NULL,
 	STRING_STRING
@@ -16,7 +17,7 @@ export function parse (arg) {
 		throw new TypeError(MSG_INVALID_INPUT);
 	}
 
-	const result = JSON.parse(`[${arg.trim().split(/(?<=})\n/).join(",")}]`);
+	const result = JSON.parse(`[${arg.trim().split(/(?<=})\n/).join(STRING_COMMA)}]`);
 
 	return result.length > 1 ? result : result[0];
 }

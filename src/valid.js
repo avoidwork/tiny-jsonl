@@ -1,3 +1,5 @@
+import {STRING_OBJECT} from "./constants.js";
+
 export function valid (arg) {
-	return typeof arg === "object" && arg !== null;
+	return typeof arg === STRING_OBJECT && arg !== null;
 }

@@ -3,7 +3,7 @@
  *
  * @copyright 2024 Jason Mulligan <jason.mulligan@avoidwork.com>
  * @license BSD-3-Clause
- * @version 3.0.1
+ * @version 3.0.2
  */
 'use strict';
 
@@ -11,9 +11,11 @@ const STRING_NEW_LINE = "\n";
 const STRING_STRING = "string";
 const MSG_INVALID_INPUT = "Argument must be an Array or Object";
 const STRING_NULL = "null";
+const STRING_COMMA = ",";
+const STRING_OBJECT = "object";
 
 function valid (arg) {
-	return typeof arg === "object" && arg !== null;
+	return typeof arg === STRING_OBJECT && arg !== null;
 }
 
 /**
@@ -26,7 +28,7 @@ function parse (arg) {
 		throw new TypeError(MSG_INVALID_INPUT);
 	}
 
-	const result = JSON.parse(`[${arg.trim().split(/(?<=})\n/).join(",")}]`);
+	const result = JSON.parse(`[${arg.trim().split(/(?<=})\n/).join(STRING_COMMA)}]`);
 
 	return result.length > 1 ? result : result[0];
 }
