@@ -7,7 +7,8 @@
  */
 (function(g,f){typeof exports==='object'&&typeof module!=='undefined'?f(exports):typeof define==='function'&&define.amd?define(['exports'],f):(g=typeof globalThis!=='undefined'?globalThis:g||self,f(g.jsonl={}));})(this,(function(exports){'use strict';const STRING_NEW_LINE = "\n";
 const STRING_STRING = "string";
-const MSG_INVALID_INPUT = "Argument must be an Array or Object";function valid (arg) {
+const MSG_INVALID_INPUT = "Argument must be an Array or Object";
+const STRING_NULL = "null";function valid (arg) {
 	return typeof arg === "object" && arg !== null;
 }/**
  * Converts a JSONL string to an Array of Objects
@@ -35,7 +36,7 @@ function stringify (arg) {
 	}
 
 	const input = Array.isArray(arg) ? arg : [arg];
-	const rows = typeof input[0] === "object";
+	const rows = input.some(valid);
 
-	return rows ? input.map(i => valid(i) ? JSON.stringify(i) : i).join(STRING_NEW_LINE) : JSON.stringify(input);
+	return rows ? input.map(i => i === null ? STRING_NULL : valid(i) ? JSON.stringify(i) : i).join(STRING_NEW_LINE) : JSON.stringify(input);
 }exports.parse=parse;exports.stringify=stringify;}));

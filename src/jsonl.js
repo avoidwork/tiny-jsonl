@@ -1,6 +1,7 @@
 import {
 	MSG_INVALID_INPUT,
 	STRING_NEW_LINE,
+	STRING_NULL,
 	STRING_STRING
 } from "./constants.js";
 import {valid} from "./valid.js";
@@ -31,7 +32,7 @@ export function stringify (arg) {
 	}
 
 	const input = Array.isArray(arg) ? arg : [arg];
-	const rows = typeof input[0] === "object";
+	const rows = input.some(valid);
 
-	return rows ? input.map(i => valid(i) ? JSON.stringify(i) : i).join(STRING_NEW_LINE) : JSON.stringify(input);
+	return rows ? input.map(i => i === null ? STRING_NULL : valid(i) ? JSON.stringify(i) : i).join(STRING_NEW_LINE) : JSON.stringify(input);
 }
