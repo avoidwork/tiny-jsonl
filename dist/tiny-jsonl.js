@@ -3,7 +3,7 @@
  *
  * @copyright 2024 Jason Mulligan <jason.mulligan@avoidwork.com>
  * @license BSD-3-Clause
- * @version 3.0.2
+ * @version 3.0.3
  */
 const STRING_NEW_LINE = "\n";
 const STRING_STRING = "string";
