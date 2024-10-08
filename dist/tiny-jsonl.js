@@ -3,7 +3,7 @@
  *
  * @copyright 2024 Jason Mulligan <jason.mulligan@avoidwork.com>
  * @license BSD-3-Clause
- * @version 3.0.3
+ * @version 3.0.4
  */
 const STRING_NEW_LINE = "\n";
 const STRING_STRING = "string";
@@ -13,7 +13,7 @@ const STRING_COMMA = ",";
 const STRING_OBJECT = "object";function valid (arg) {
 	return typeof arg === STRING_OBJECT && arg !== null;
 }/**
- * Converts a JSONL string to an Array of Objects
+ * Converts a JSONL string to an Object or Array of Objects
  * @param arg
  * @returns {any}
  */

@@ -3,7 +3,7 @@
  *
  * @copyright 2024 Jason Mulligan <jason.mulligan@avoidwork.com>
  * @license BSD-3-Clause
- * @version 3.0.3
+ * @version 3.0.4
  */
 'use strict';
 
@@ -19,7 +19,7 @@ function valid (arg) {
 }
 
 /**
- * Converts a JSONL string to an Array of Objects
+ * Converts a JSONL string to an Object or Array of Objects
  * @param arg
  * @returns {any}
  */

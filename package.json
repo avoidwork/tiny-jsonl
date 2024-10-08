@@ -1,6 +1,6 @@
 {
   "name": "tiny-jsonl",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "Stringify Objects and Arrays into JSONL Strings, and parse JSONL Strings into Objects and Arrays.",
   "main": "dist/tiny-jsonl.cjs",
   "exports": {

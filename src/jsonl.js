@@ -8,7 +8,7 @@ import {
 import {valid} from "./valid.js";
 
 /**
- * Converts a JSONL string to an Array of Objects
+ * Converts a JSONL string to an Object or Array of Objects
  * @param arg
  * @returns {any}
  */
